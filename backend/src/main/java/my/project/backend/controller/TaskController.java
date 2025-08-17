@@ -1,8 +1,10 @@
 package my.project.backend.controller;
 
 
+import lombok.RequiredArgsConstructor;
 import my.project.backend.entity.Task;
 import my.project.backend.service.TaskService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,13 +14,10 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/tasks")
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class TaskController {
 
     private final TaskService taskService;
-
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
-    }
 
     @GetMapping
     public List<Task> getAllTasks() {

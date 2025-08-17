@@ -1,6 +1,7 @@
 package my.project.backend.service;
 
 
+import lombok.RequiredArgsConstructor;
 import my.project.backend.entity.Task;
 import my.project.backend.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,10 @@ import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class TaskService {
-    private final TaskRepository taskRepository;
 
-    @Autowired
-    public TaskService(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
-    }
+    private final TaskRepository taskRepository;
 
     public List<Task> getAllTasks() {
         return taskRepository.findAll();

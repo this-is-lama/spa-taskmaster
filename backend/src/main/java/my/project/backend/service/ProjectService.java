@@ -1,5 +1,6 @@
 package my.project.backend.service;
 
+import lombok.RequiredArgsConstructor;
 import my.project.backend.entity.Project;
 import my.project.backend.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +12,10 @@ import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class ProjectService {
 
     private final ProjectRepository projectRepository;
-
-    @Autowired
-    public ProjectService(ProjectRepository projectRepository) {
-        this.projectRepository = projectRepository;
-    }
 
     public List<Project> getAllProjects() {
         return projectRepository.findAll();

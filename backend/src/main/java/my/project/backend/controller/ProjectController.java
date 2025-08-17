@@ -1,8 +1,10 @@
 package my.project.backend.controller;
 
+import lombok.RequiredArgsConstructor;
 import my.project.backend.entity.Project;
 import my.project.backend.entity.Task;
 import my.project.backend.service.ProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,12 +14,10 @@ import java.util.Optional;
 @CrossOrigin(origins="http://localhost:4200", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/projects")
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class ProjectController {
-    private final ProjectService projectService;
 
-    public ProjectController(ProjectService projectService) {
-        this.projectService = projectService;
-    }
+    private final ProjectService projectService;
 
     @GetMapping
     public List<Project> getAllProjects() {
