@@ -15,7 +15,6 @@ import java.util.List;
 @Getter
 @Setter
 public class Project {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,7 +22,7 @@ public class Project {
     private String name;
     private String description;
 
-    @OneToMany(mappedBy = "project",  cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> tasks;
 
     public void addTask(Task task) {
